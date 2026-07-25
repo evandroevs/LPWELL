@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portalprimeesquadrias.com.br/sitemap.xml
