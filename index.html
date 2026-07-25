@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Prime — Esquadrias de Alumínio sob medida</title>
+<meta name="description" content="Esquadrias de alumínio de alto padrão: linha minimalista, brises, ripados, portas em ACM, guarda-corpos e corrimãos. Do projeto à instalação, com Wellington Passos.">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --ink:#f4f2ee;
+    --ink-dim:#b9b4ab;
+    --gold:#d9a75f;
+    --line:rgba(244,242,238,.14);
+    --wa:#22c15e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+
+  /* ---------- header ---------- */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,4vw,56px);mix-blend-mode:normal;background:linear-gradient(rgba(11,11,13,.55),transparent)}
+  .wordmark{letter-spacing:.42em;font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .wordmark span{color:var(--gold)}
+  .header-cta{font-size:13px;letter-spacing:.08em;color:var(--ink);text-decoration:none;border:1px solid var(--line);padding:10px 18px;border-radius:999px;transition:.25s;backdrop-filter:blur(6px)}
+  .header-cta:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* ---------- cinema (plano-sequência) ---------- */
+  .cinema{position:fixed;inset:0;z-index:1;background:#000}
+  .cinema video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s linear}
+  .cinema video.on{opacity:1}
+  .caption{position:absolute;left:clamp(20px,5vw,72px);bottom:clamp(72px,12vh,120px);z-index:5;max-width:min(560px,84vw);opacity:0;transform:translateY(14px);transition:opacity .45s ease .15s,transform .45s ease .15s;pointer-events:none}
+  .caption.on{opacity:1;transform:none;pointer-events:auto}
+  .caption .kicker{display:block;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .caption h2{font-size:clamp(30px,4.6vw,54px);line-height:1.06;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+  .caption p{margin-top:12px;font-size:clamp(15px,1.6vw,18px);color:var(--ink-dim);text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .caption .wa-btn{pointer-events:auto}
+
+  .progress{position:absolute;right:clamp(14px,3vw,36px);top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:10px}
+  .progress i{width:2px;height:22px;background:var(--line);border-radius:2px;transition:.3s}
+  .progress i.on{background:var(--gold)}
+
+  .scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-dim);opacity:.8;animation:hint 2.4s ease-in-out infinite}
+  @keyframes hint{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+  /* trilho de scroll invisível que dirige as cenas */
+  .track section{height:160vh}
+  .track section:last-child{height:190vh}
+
+  /* ---------- conteúdo pós-percurso ---------- */
+  .after{position:relative;z-index:10;background:var(--bg)}
+  .after::before{content:"";display:block;height:1px;background:var(--line)}
+  .wrap{max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,130px) clamp(20px,4vw,56px)}
+  .sec-kicker{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .after h2{font-size:clamp(28px,3.6vw,44px);line-height:1.12;max-width:720px}
+  .after .lead{margin-top:18px;max-width:640px;color:var(--ink-dim);font-size:17px;line-height:1.65}
+
+  .grid{margin-top:clamp(36px,5vw,64px);display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .grid figure{position:relative;overflow:hidden;border-radius:10px;background:#141416}
+  .grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .grid figure:hover img{transform:scale(1.035)}
+  .grid figcaption{position:absolute;left:14px;bottom:12px;font-size:12px;letter-spacing:.06em;color:var(--ink);text-shadow:0 1px 10px rgba(0,0,0,.7);opacity:0;transition:.35s}
+  .grid figure:hover figcaption{opacity:1}
+  .g1{grid-column:span 4;aspect-ratio:16/9}
+  .g2{grid-column:span 2;aspect-ratio:4/5}
+  .g3{grid-column:span 2;aspect-ratio:1/1}
+  .g4{grid-column:span 4;aspect-ratio:16/8}
+  .g5{grid-column:span 3;aspect-ratio:16/10}
+  .g6{grid-column:span 3;aspect-ratio:16/10}
+
+  /* wellington */
+  .who{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:clamp(32px,6vw,84px);align-items:center}
+  .who .foto{border-radius:12px;overflow:hidden;background:#141416}
+  .who .foto img{width:100%;display:block}
+  .who h2{margin-bottom:6px}
+  .who .role{color:var(--gold);letter-spacing:.18em;text-transform:uppercase;font-size:12px;margin-bottom:22px}
+  .who p{color:var(--ink-dim);line-height:1.7;max-width:56ch}
+  .who p + p{margin-top:14px}
+
+  /* CTA final */
+  .cta-final{text-align:center}
+  .cta-final h2{max-width:none}
+  .cta-final .lead{margin-left:auto;margin-right:auto;text-align:center}
+  .wa-btn{display:inline-flex;align-items:center;gap:10px;margin-top:34px;background:var(--wa);color:#08130b;font-weight:700;font-size:16px;letter-spacing:.02em;padding:16px 30px;border-radius:999px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+  .wa-btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(34,193,94,.35)}
+  .wa-btn svg{width:21px;height:21px;flex:none}
+
+  footer{border-top:1px solid var(--line);padding:44px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;color:var(--ink-dim);font-size:13px}
+  footer .wordmark{font-size:13px}
+
+  @media (max-width:820px){
+    .who{grid-template-columns:1fr}
+    .who .foto{max-width:420px}
+    .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 6}
+    .g2{aspect-ratio:16/10}.g3{aspect-ratio:16/10}
+    .progress{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!-- LOGO: trocar o wordmark por <img src="assets/logo-portal-prime.png"> quando o PNG chegar -->
+  <a class="wordmark" href="#topo">PORTAL<span>&nbsp;PRIME</span></a>
+  <a class="header-cta wa-link" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
+</header>
+
+<!-- ============ PLANO-SEQUÊNCIA (8 cenas) ============ -->
+<div class="cinema" id="cinema">
+  <video id="v0" muted playsinline preload="auto"     poster="assets/videos/cena-01-poster.jpg" src="assets/videos/cena-01.mp4"></video>
+  <video id="v1" muted playsinline preload="auto"     poster="assets/videos/cena-02-poster.jpg" src="assets/videos/cena-02.mp4"></video>
+  <video id="v2" muted playsinline preload="metadata" poster="assets/videos/cena-03-poster.jpg" src="assets/videos/cena-03.mp4"></video>
+  <video id="v3" muted playsinline preload="metadata" poster="assets/videos/cena-04-poster.jpg" src="assets/videos/cena-04.mp4"></video>
+  <video id="v4" muted playsinline preload="metadata" poster="assets/videos/cena-05-poster.jpg" src="assets/videos/cena-05.mp4"></video>
+  <video id="v5" muted playsinline preload="metadata" poster="assets/videos/cena-06-poster.jpg" src="assets/videos/cena-06.mp4"></video>
+  <video id="v6" muted playsinline preload="metadata" poster="assets/videos/cena-07-poster.jpg" src="assets/videos/cena-07.mp4"></video>
+  <video id="v7" muted playsinline preload="metadata" poster="assets/videos/cena-08-poster.jpg" src="assets/videos/cena-08.mp4"></video>
+
+  <div class="caption" data-cap="0">
+    <span class="kicker">Esquadrias de alumínio</span>
+    <h2>Desempenho, durabilidade e design sob medida.</h2>
+  </div>
+  <div class="caption" data-cap="1">
+    <span class="kicker">Linha minimalista</span>
+    <h2>Perfis ultrafinos.</h2>
+    <p>Mais vidro, mais luz, menos moldura.</p>
+  </div>
+  <div class="caption" data-cap="2">
+    <span class="kicker">Brises de alumínio</span>
+    <h2>Conforto térmico e privacidade sem fechar a vista.</h2>
+  </div>
+  <div class="caption" data-cap="3">
+    <span class="kicker">Ripados de alumínio</span>
+    <h2>Textura e presença, com manutenção quase zero.</h2>
+  </div>
+  <div class="caption" data-cap="4">
+    <span class="kicker">Portas em ACM</span>
+    <h2>Elegância e resistência em uma superfície só.</h2>
+  </div>
+  <div class="caption" data-cap="5">
+    <span class="kicker">Guarda-corpos e corrimãos</span>
+    <h2>Segurança que atende à norma sem pesar no projeto.</h2>
+  </div>
+  <div class="caption" data-cap="6">
+    <span class="kicker">Vidro e alumínio</span>
+    <h2>A vista continua. A proteção também.</h2>
+  </div>
+  <div class="caption" data-cap="7">
+    <span class="kicker">Portal Prime</span>
+    <h2>Esquadrias sob medida, do projeto à instalação.</h2>
+    <a class="wa-btn wa-link" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .3-.4.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.5 14.5 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+      Falar com Wellington Passos
+    </a>
+  </div>
+
+  <div class="progress" id="progress"></div>
+  <div class="scroll-hint" id="hint">role para percorrer</div>
+</div>
+
+<div class="track" id="track">
+  <section></section><section></section><section></section><section></section>
+  <section></section><section></section><section></section><section></section>
+</div>
+
+<!-- ============ CASA GERMINADA ============ -->
+<div class="after" id="topo-after">
+  <div class="wrap" id="casa-germinada">
+    <div class="sec-kicker">O projeto</div>
+    <h2>Casa germinada de alto padrão: um projeto, duas residências impecáveis.</h2>
+    <p class="lead">Duas unidades espelhadas que dividem a estrutura — e multiplicam o retorno. Cada detalhe de esquadria, brise, ripado e guarda-corpo foi resolvido em alumínio de alto desempenho, do desenho à instalação.</p>
+    <div class="grid">
+      <figure class="g1"><img src="assets/fotos/germinada-01-fachada-dia.jpg" alt="Fachada frontal diurna, simetria das duas unidades" loading="lazy"><figcaption>Fachada frontal — simetria total</figcaption></figure>
+      <figure class="g2"><img src="assets/fotos/germinada-02-detalhe-perfil.jpg" alt="Detalhe macro do perfil de alumínio com o vidro" loading="lazy"><figcaption>Perfil ultrafino de 25&nbsp;mm</figcaption></figure>
+      <figure class="g3"><img src="assets/fotos/germinada-03-lazer-golden.jpg" alt="Área de lazer na golden hour" loading="lazy"><figcaption>Área de lazer</figcaption></figure>
+      <figure class="g4"><img src="assets/fotos/germinada-04-interior-quintal.jpg" alt="Interior com esquadria aberta para o quintal" loading="lazy"><figcaption>Integração total interior–exterior</figcaption></figure>
+      <figure class="g5"><img src="assets/fotos/germinada-05-ripado-luz.jpg" alt="Detalhe do ripado com luz rasante" loading="lazy"><figcaption>Ripado de alumínio freijó</figcaption></figure>
+      <figure class="g6"><img src="assets/fotos/germinada-06-fachada-noite.jpg" alt="Fachada noturna com luzes acesas" loading="lazy"><figcaption>Fachada noturna</figcaption></figure>
+    </div>
+  </div>
+
+  <!-- ============ WELLINGTON ============ -->
+  <div class="wrap who" id="wellington">
+    <div class="foto"><img src="assets/fotos/wellington.jpg" alt="Wellington Passos, consultor de esquadrias" loading="lazy"></div>
+    <div>
+      <div class="sec-kicker">Quem acompanha o seu projeto</div>
+      <h2>Wellington Passos</h2>
+      <div class="role">Consultor de Esquadrias</div>
+      <!-- BIO: texto provisório — ajustar com o Wellington -->
+      <p>Do primeiro traço do arquiteto à última regulagem de fechadura, Wellington acompanha pessoalmente cada etapa: especificação técnica, medição em obra, fabricação sob medida e instalação.</p>
+      <p>É um único responsável pelo resultado — sem ruído entre projeto, fábrica e obra. Esquadrias que fecham macio, vedam de verdade e envelhecem bem.</p>
+      <a class="wa-btn wa-link" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .3-.4.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.5 14.5 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Conversar no WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ CTA FINAL ============ -->
+  <div class="wrap cta-final" id="orcamento">
+    <div class="sec-kicker">Próximo passo</div>
+    <h2>Seu projeto merece esquadrias à altura.</h2>
+    <p class="lead">Envie o projeto ou as medidas pelo WhatsApp e receba uma proposta técnica sob medida — sem compromisso.</p>
+    <a class="wa-btn wa-link" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .3-.4.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.5 14.5 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+      Falar com Wellington Passos
+    </a>
+  </div>
+
+  <footer>
+    <span class="wordmark">PORTAL<span style="color:var(--gold)">&nbsp;PRIME</span></span>
+    <!-- INFOS DA EMPRESA: endereço, telefone e redes — preencher quando o material chegar -->
+    <span>Esquadrias de alumínio sob medida &nbsp;·&nbsp; do projeto à instalação</span>
+  </footer>
+</div>
+
+<script>
+  /* ====== CONFIG — TROCAR PELO NÚMERO REAL DO WELLINGTON (DDD + número, só dígitos) ====== */
+  const WHATSAPP = "5511999999999";
+  const WA_MSG = encodeURIComponent("Olá, Wellington! Vi a página da Portal Prime e quero um orçamento de esquadrias.");
+  document.querySelectorAll(".wa-link").forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${WA_MSG}`);
+
+  /* ====== plano-sequência ====== */
+  const videos   = [...document.querySelectorAll(".cinema video")];
+  const captions = [...document.querySelectorAll(".caption")];
+  const sections = [...document.querySelectorAll(".track section")];
+  const progress = document.getElementById("progress");
+  const hint     = document.getElementById("hint");
+  const played   = new Array(videos.length).fill(false);
+  let active = -1;
+
+  videos.forEach(() => progress.appendChild(document.createElement("i")));
+  const bars = [...progress.children];
+
+  function activate(i){
+    if (i === active) return;
+    active = i;
+    videos.forEach((v, k) => v.classList.toggle("on", k === i));
+    captions.forEach((c, k) => c.classList.toggle("on", k === i));
+    bars.forEach((b, k) => b.classList.toggle("on", k <= i));
+    hint.style.opacity = i === 0 ? ".8" : "0";
+
+    const v = videos[i];
+    if (!played[i]) { played[i] = true; v.currentTime = 0; v.play().catch(()=>{}); }
+    // pré-carrega o próximo, pausado no frame 0 (spec: troca invisível)
+    const nxt = videos[i + 1];
+    if (nxt && nxt.preload !== "auto") { nxt.preload = "auto"; nxt.load(); }
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) activate(sections.indexOf(e.target)); });
+  }, { threshold: 0.5 });
+  sections.forEach(s => io.observe(s));
+
+  // congela no último frame (garante que não volte ao poster)
+  videos.forEach(v => v.addEventListener("ended", () => {
+    if (v.duration) v.currentTime = Math.max(0, v.duration - 0.05);
+  }));
+
+  // retoma o clipe ativo se o navegador pausou (troca de aba / autoplay bloqueado)
+  function resumeActive(){
+    const v = videos[active];
+    if (v && played[active] && v.paused && !v.ended) v.play().catch(()=>{});
+  }
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) resumeActive(); });
+  ["pointerdown","wheel","touchstart","keydown"].forEach(ev =>
+    window.addEventListener(ev, resumeActive, { once: true, passive: true }));
+
+  activate(0);
+</script>
+</body>
+</html>
