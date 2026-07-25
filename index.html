@@ -46,6 +46,8 @@
   "url": "https://portalprimeesquadrias.com.br/",
   "telephone": "+5519996050402",
   "priceRange": "$$$",
+  "foundingDate": "2012",
+  "sameAs": ["https://instagram.com/portalprimeesquadrias"],
   "areaServed": [
     { "@type": "City", "name": "Campinas" },
     { "@type": "City", "name": "Valinhos" },
@@ -171,6 +173,16 @@
   .hero .btn-wa{font-size:16px;padding:16px 28px}
   .hero .regions{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13.5px;color:rgba(255,255,255,.82)}
   .hero .regions b{color:var(--bronze);font-weight:600}
+  @media(max-width:640px){
+    .hero{min-height:100svh}
+    .hero .wrap{padding-top:108px;padding-bottom:56px}
+    .hero h1{font-size:clamp(30px,8.4vw,42px);max-width:16ch}
+    .hero .sub{font-size:15.5px;margin-top:14px;max-width:40ch}
+    .hero-cta{margin-top:24px;flex-direction:column;align-items:stretch;gap:10px}
+    .hero-cta .btn{justify-content:center;width:100%}
+    .hero .bg{object-position:center 30%}
+    .hero::after{background:linear-gradient(180deg,rgba(10,8,4,.5) 0%,rgba(10,8,4,.22) 34%,rgba(10,8,4,.35) 60%,rgba(10,8,4,.9) 100%)}
+  }
 
   /* ---------- faixa ---------- */
   .strip{background:var(--ink);color:#efe9dd}
@@ -223,21 +235,16 @@
   @media(max-width:860px){.lines{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:480px){.lines{grid-template-columns:1fr}}
 
-  /* projetos galeria */
-  .gal{margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-  .gal figure{position:relative;overflow:hidden;border-radius:12px;background:#141416}
-  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  /* projetos galeria — masonry */
+  .gal{margin-top:clamp(40px,5vw,60px);columns:3;column-gap:14px}
+  .gal figure{position:relative;overflow:hidden;border-radius:12px;background:#141416;break-inside:avoid;margin:0 0 14px}
+  .gal img{width:100%;height:auto;display:block;transition:transform .7s ease}
   .gal figure:hover img{transform:scale(1.05)}
   .gal figcaption{position:absolute;left:16px;bottom:14px;color:#fff;font-size:13px;letter-spacing:.02em;text-shadow:0 1px 12px rgba(0,0,0,.7);opacity:0;transition:.3s;z-index:2}
-  .gal figure::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.5),transparent 45%);opacity:0;transition:.3s}
+  .gal figure::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 45%);opacity:0;transition:.3s}
   .gal figure:hover figcaption,.gal figure:hover::after{opacity:1}
-  .a{grid-column:span 4;aspect-ratio:16/9}
-  .b{grid-column:span 2;aspect-ratio:2/3}
-  .c{grid-column:span 2;aspect-ratio:1/1}
-  .d{grid-column:span 4;aspect-ratio:16/8}
-  .e{grid-column:span 3;aspect-ratio:16/10}
-  .f{grid-column:span 3;aspect-ratio:16/10}
-  @media(max-width:820px){.a,.b,.c,.d,.e,.f{grid-column:span 6;aspect-ratio:16/10}}
+  @media(max-width:820px){.gal{columns:2}}
+  @media(max-width:520px){.gal{columns:1}}
 
   /* arquitetos */
   .pro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center}
@@ -331,21 +338,17 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="topo">
-  <img class="bg" src="assets/videos/cena-08-poster.jpg" alt="Residência de alto padrão com fachada em esquadrias de alumínio e grandes vãos de vidro iluminada ao entardecer" fetchpriority="high">
+  <img class="bg" src="assets/projetos/hero-casa-piscina.jpg" alt="Residência de alto padrão com esquadrias de alumínio, grandes vãos de vidro e piscina" fetchpriority="high">
   <div class="wrap">
-    <span class="eyebrow" style="color:var(--bronze)">Portal Prime · Wellington Passos</span>
-    <h1>Esquadrias de alumínio de alto padrão para projetos que exigem mais.</h1>
-    <p class="sub">Design, desempenho e durabilidade em residências, condomínios e empreendimentos — do projeto arquitetônico à instalação final. Consultoria especializada no Interior e no Litoral de São Paulo.</p>
+    <span class="eyebrow" style="color:var(--bronze)">Portal Prime · Esquadrias de Alumínio</span>
+    <h1>Esquadrias de alumínio de alto padrão.</h1>
+    <p class="sub">Design e desempenho para residências e projetos de arquitetura no interior e no litoral de São Paulo.</p>
     <div class="hero-cta">
       <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .3-.4.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.5 14.5 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
         Solicitar orçamento pelo WhatsApp
       </a>
-      <a class="btn btn-ghost" href="#projetos">Ver projetos executados</a>
-    </div>
-    <div class="regions">
-      <span><b>Interior SP:</b> Campinas · Valinhos · Vinhedo · Jundiaí · Indaiatuba</span>
-      <span><b>Litoral:</b> Riviera de São Lourenço · Bertioga · Ilhabela · Guarujá</span>
+      <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
     </div>
   </div>
 </section>
@@ -359,29 +362,6 @@
     <div class="item"><b>Interior + Litoral</b><span>Atendimento em toda a região de SP</span></div>
   </div>
 </div>
-
-<!-- ============ APRESENTAÇÃO ============ -->
-<section class="band" id="sobre">
-  <div class="wrap about">
-    <div class="foto">
-      <img src="assets/fotos/wellington.jpg" alt="Wellington Passos, consultor especialista em esquadrias de alumínio da Portal Prime" loading="lazy" width="600" height="750">
-    </div>
-    <div>
-      <span class="eyebrow">Quem acompanha o seu projeto</span>
-      <h2>Wellington Passos, consultor especialista em esquadrias.</h2>
-      <p>Sou Wellington Passos, consultor especializado em esquadrias de alumínio. Meu trabalho é entender cada projeto e indicar a solução que une estética, conforto, segurança e desempenho — representando a Portal Prime Esquadrias.</p>
-      <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Atendimento personalizado</b> — do primeiro contato à entrega, um único responsável pelo resultado.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Especificação técnica correta</b> para cada obra: linha, vidro, ferragens e vedação.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Suporte para clientes e profissionais</b> da construção — arquitetos, engenheiros e construtoras.</span></li>
-      </ul>
-      <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .3-.4.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.5 14.5 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
-        Falar com Wellington
-      </a>
-    </div>
-  </div>
-</section>
 
 <!-- ============ SOLUÇÕES ============ -->
 <section class="band paper" id="solucoes">
@@ -438,18 +418,45 @@
       <p>Residências de alto padrão, casas de condomínio e projetos arquitetônicos executados com esquadrias de alumínio de ponta a ponta — do desenho à instalação.</p>
     </div>
     <div class="gal">
-      <figure class="a"><img src="assets/fotos/germinada-01-fachada-dia.jpg" alt="Fachada frontal diurna de casa germinada de alto padrão com esquadrias de alumínio" loading="lazy"><figcaption>Casa germinada — fachada frontal</figcaption></figure>
-      <figure class="b"><img src="assets/fotos/germinada-02-detalhe-perfil.jpg" alt="Detalhe do perfil de alumínio ultrafino com vidro" loading="lazy"><figcaption>Perfil ultrafino</figcaption></figure>
-      <figure class="c"><img src="assets/fotos/germinada-03-lazer-golden.jpg" alt="Área de lazer com esquadrias de alumínio na golden hour" loading="lazy"><figcaption>Área de lazer</figcaption></figure>
-      <figure class="d"><img src="assets/fotos/germinada-04-interior-quintal.jpg" alt="Interior integrado ao quintal por esquadria de alumínio aberta" loading="lazy"><figcaption>Integração interior–exterior</figcaption></figure>
-      <figure class="e"><img src="assets/fotos/germinada-05-ripado-luz.jpg" alt="Ripado de alumínio com luz rasante" loading="lazy"><figcaption>Ripado de alumínio</figcaption></figure>
-      <figure class="f"><img src="assets/fotos/germinada-06-fachada-noite.jpg" alt="Fachada noturna iluminada de residência de alto padrão" loading="lazy"><figcaption>Fachada noturna</figcaption></figure>
+      <figure><img src="assets/projetos/proj-fachada-frontal.jpg" alt="Fachada de residência de alto padrão com grandes esquadrias de vidro e pele de vidro" loading="lazy"><figcaption>Fachada e pele de vidro</figcaption></figure>
+      <figure><img src="assets/projetos/proj-mezanino-vidro.jpg" alt="Mezanino com guarda-corpo de vidro e esquadrias de alumínio de piso a teto" loading="lazy"><figcaption>Mezanino com guarda-corpo de vidro</figcaption></figure>
+      <figure><img src="assets/projetos/proj-sala-vaos.jpg" alt="Sala ampla com grandes vãos de portas de correr de alumínio integrando ao exterior" loading="lazy"><figcaption>Sala com grandes vãos</figcaption></figure>
+      <figure><img src="assets/projetos/proj-ripado.jpg" alt="Ripado de alumínio e pele de vidro na fachada lateral de residência" loading="lazy"><figcaption>Ripado de alumínio</figcaption></figure>
+      <figure><img src="assets/projetos/proj-fachada-14.jpg" alt="Fachada frontal moderna com esquadrias de alumínio pretas e detalhes em madeira" loading="lazy"><figcaption>Fachada frontal</figcaption></figure>
+      <figure><img src="assets/projetos/proj-pe-direito.jpg" alt="Sala de pé-direito duplo com esquadrias de alumínio pretas e claraboia" loading="lazy"><figcaption>Pé-direito duplo</figcaption></figure>
+      <figure><img src="assets/projetos/proj-banheiro.jpg" alt="Banheiro com claraboia estruturada e pele de vidro sobre a banheira" loading="lazy"><figcaption>Claraboia e pele de vidro</figcaption></figure>
+      <figure><img src="assets/projetos/proj-pergolado.jpg" alt="Varanda com cobertura de vidro estruturada e portas de correr de alumínio" loading="lazy"><figcaption>Cobertura de vidro</figcaption></figure>
+      <figure><img src="assets/projetos/proj-lounge-gym.jpg" alt="Área de lazer com piscina, academia e grandes esquadrias de alumínio ao fundo" loading="lazy"><figcaption>Área de lazer e academia</figcaption></figure>
+      <figure><img src="assets/projetos/proj-suite-varanda.jpg" alt="Suíte integrada à varanda por porta de correr de alumínio com vista" loading="lazy"><figcaption>Suíte integrada à varanda</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APRESENTAÇÃO (WELLINGTON) ============ -->
+<section class="band paper" id="sobre">
+  <div class="wrap about">
+    <div class="foto">
+      <img src="assets/fotos/wellington.jpg" alt="Wellington Passos, consultor especialista em esquadrias de alumínio da Portal Prime" loading="lazy" width="600" height="750">
+    </div>
+    <div>
+      <span class="eyebrow">Quem acompanha o seu projeto</span>
+      <h2>Wellington Passos, consultor especialista em esquadrias.</h2>
+      <p>Por trás de cada obra dessas está um trabalho de consultoria. Sou Wellington Passos, especializado em esquadrias de alumínio: entendo o seu projeto e indico a solução que une estética, conforto, segurança e desempenho — representando a Portal Prime Esquadrias.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Atendimento personalizado</b> — do primeiro contato à entrega, um único responsável pelo resultado.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Especificação técnica correta</b> para cada obra: linha, vidro, ferragens e vedação.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Suporte para clientes e profissionais</b> da construção — arquitetos, engenheiros e construtoras.</span></li>
+      </ul>
+      <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .3-.4.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.5 14.5 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Falar com Wellington
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ============ ARQUITETOS E CONSTRUTORAS ============ -->
-<section class="band paper" id="arquitetos">
+<section class="band" id="arquitetos">
   <div class="wrap pro">
     <div class="foto">
       <img src="assets/videos/cena-05-poster.jpg" alt="Porta pivotante de alumínio de alto padrão em hall de entrada" loading="lazy">
@@ -475,7 +482,7 @@
 </section>
 
 <!-- ============ REGIÕES ============ -->
-<section class="band" id="regioes">
+<section class="band paper" id="regioes">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Onde atendemos</span>
@@ -597,13 +604,14 @@
       <div>
         <h4>Contato</h4>
         <a class="wa-link" href="#" target="_blank" rel="noopener">WhatsApp (19) 99605-0402</a>
-        <!-- TROCAR: @instagram, e-mail e endereço quando o material chegar -->
+        <a href="tel:+551932442478">Telefone (19) 3244-2478</a>
+        <a href="https://instagram.com/portalprimeesquadrias" target="_blank" rel="noopener">@portalprimeesquadrias</a>
         <a href="#contato">Solicitar orçamento</a>
       </div>
     </div>
     <div class="copy">
-      <span>© Portal Prime Esquadrias · Wellington Passos — Consultor Especialista em Esquadrias de Alumínio</span>
-      <span>Interior e Litoral de São Paulo</span>
+      <span>© Portal Prime Esquadrias · Portal Aluminum Prime LTDA — atuando desde 2012 · Wellington Passos, Consultor Especialista</span>
+      <span>CNPJ 17.257.603/0001-76 · Interior e Litoral de SP</span>
     </div>
   </div>
 </footer>
